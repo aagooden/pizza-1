@@ -20,7 +20,7 @@ end
 puts "How many pizzas would you like?"
 quantity = $stdin.gets.chomp.to_i
 
-puts "Total cost for #{quantity} pizzas is $#{quantity * 12.99.to_f}."
+puts "Total cost for #{quantity} pizzas is $#{quantity * 16.99.to_f}."
 
 while quantity > 0 do
   quantity -= 1
