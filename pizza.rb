@@ -1,43 +1,55 @@
 crusts = ["regular", "stuffed", "pretzel", "bacon wrapped"]
 meats = ["sausage", "pepperoni", "bacon", "ham", "beef"]
-veggies = ["peppers", "banana peppers", "olives", "pineapple"]
+veggies = ["peppers", "banana peppers", "olives", "pineapple", "mushrooms"]
 sauce = ["regular", "cheese", "ranch", "BBQ"]
-special = ["mushrooms", "three cheese blend"]
+special = ["three cheese blend", "toothpaste", "legos"]
+size = ["Small", "Medium", "Large", "Extra large"]
 
-def cheese
+def cheese(cost)
   if [true, false].sample == true
-    "extra cheese, "
+    return "extra cheese, "
+    cost += 1
   end
 end
 
-def double_pepperoni
+def double_pepperoni(cost)
   if [true, false].sample == true
-    $total_cost += 1
-    "double pepperoni, "
+    return "double pepperoni, "
+    cost += 1
   end
 end
 
-def size_selection
-  size = ["Small", "Medium", "Large", "Extra large"]
-  return size.sample #Note:  returned string is displayed properly, but not total cost
-  if size[1] #if larger than small (index 0) add 1 for each size larger
-    $total_cost += 1
+def size_cost(size, cost)
+  if size[0]
+    cost += 10.99
+  elsif size[1]
+    cost += 12.99
   elsif size[2]
-    $total_cost += 2
+    cost += 14.99
   elsif size[3]
-    $total_cost += 3
+    cost += 16.99
   end
 end
+
+#ingredients_cost(array, cost)
+
+#end
 
 puts "How many pizzas would you like?"
 quantity = $stdin.gets.chomp.to_i
 
-$total_cost = quantity * 14.99
 
+counter = 0
 bake_pizza = quantity
 
-while bake_pizza > 0 do
-  bake_pizza -= 1
-  puts "#{size_selection} pizza with #{double_pepperoni}#{meats.sample}, #{veggies.sample}, #{special.sample}, #{cheese}#{sauce.sample} sauce, and #{crusts.sample} crust."
+while counter < quantity do
+  counter += 1
+  cost = 0
+  sizeofpizza = size.sample
+  size_cost(sizeofpizza, cost)
+
+  puts "# #{counter}:  #{sizeofpizza} pizza with with #{double_pepperoni(cost)}#{meats.sample}, #{veggies.sample}, #{special.sample}, #{cheese(cost)}#{sauce.sample} sauce, and #{crusts.sample} crust."
+
 end
-print "#{quantity} pizzas at #{$total_cost}."
+
+puts "Total cost is $#{sprintf("%.02f", cost)}"
