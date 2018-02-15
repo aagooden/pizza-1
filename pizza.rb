@@ -19,15 +19,15 @@ def double_pepperoni(cost)
   end
 end
 
-def size_cost(size, cost)
-  if size[0]
-    cost += 10.99
+def size_cost(size)
+  if size == "Small"
+    return 10.99
   elsif size[1]
-    cost += 12.99
+    return 12.99
   elsif size[2]
-    cost += 14.99
+    return 14.99
   elsif size[3]
-    cost += 16.99
+    return 16.99
   end
 end
 
@@ -38,18 +38,25 @@ end
 puts "How many pizzas would you like?"
 quantity = $stdin.gets.chomp.to_i
 
-
+cost = 0.00.to_f #subtotal
+tax_rate = 0.06
 counter = 0
 bake_pizza = quantity
 
 while counter < quantity do
   counter += 1
-  cost = 0
   sizeofpizza = size.sample
-  size_cost(sizeofpizza, cost)
+  size_cost(sizeofpizza)
 
   puts "# #{counter}:  #{sizeofpizza} pizza with with #{double_pepperoni(cost)}#{meats.sample}, #{veggies.sample}, #{special.sample}, #{cheese(cost)}#{sauce.sample} sauce, and #{crusts.sample} crust."
-
+  cost = cost + size_cost(sizeofpizza).to_f
 end
+puts "\n"
 
+#Fees go here (i.e. delivery)
+delivery_fee = quantity * 2
+puts "Delivery Fee: $#{delivery_fee}"
+puts "Subtotal: $#{sprintf("%.02f", cost)}"
+puts "Tax: $#{sprintf("%0.02f", cost * tax_rate)}"#tax
 puts "Total cost is $#{sprintf("%.02f", cost)}"
+#puts "\nSuggested Tip: #{sprintf("%.02f", cost * 0.07)}"
