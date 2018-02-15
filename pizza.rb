@@ -55,5 +55,5 @@ delivery_fee = quantity * 2
 puts "Delivery Fee: $#{sprintf("%.02f", delivery_fee)}"
 puts "Subtotal: $#{sprintf("%.02f", cost)}"
 puts "Tax: $#{sprintf("%.02f", cost * tax_rate)}"#tax
-puts "Total cost is $#{sprintf("%.02f", cost * (1 + tax_rate))}"
+puts "Total cost is $#{sprintf("%.02f", cost * (1 + tax_rate) + delivery_fee)}"
 puts "\nSuggested Tip: #{sprintf("%.02f", cost * 0.10)}"
