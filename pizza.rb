@@ -12,13 +12,13 @@ def pizza_size
   print "> "
   select = gets.chomp.to_i
     if select == 1
-      return 9.99
+      return size = 9.99
     elsif select == 2
-      return 12.24
+      return size = 12.24
     elsif select == 3
-      return 16.99
+      return size = 16.99
     elsif select == 4
-      return 18.74
+      return size = 18.74
     end
 end
 
@@ -32,22 +32,22 @@ def pizza_menu
 
   if select == 1
     pizza_size
-    order.push [size, "Pepperoni Pizza"]
+    order.push [size.to_f, "Pepperoni Pizza"]
   elsif select == 2
     pizza_size
-    order.push [size, "Cheese Pizza"]
+    order.push [size.to_f, "Cheese Pizza"]
   elsif select == 3
     pizza_size
-    order.push [size, "Supreme Pizza"]
+    order.push [size.to_f, "Supreme Pizza"]
   elsif select == 4
     pizza_size
-    order.push == [size, "Meat Lover's Pizza"]
+    order.push == [size.to_f, "Meat Lover's Pizza"]
   #elsif select == 5
     #Custom pizza Menu
     #add $1.00 for each additional topping
   else
   end
-  main_menu
+  main_menu(order)
 end
 
 def sides(order)
@@ -62,7 +62,7 @@ def sides(order)
     order.push [8.00, "Wings"]
   else
   end
-  main_menu
+  main_menu(order)
 end
 
 def deserts
@@ -75,7 +75,7 @@ def deserts
     order.push [7.00, "Brownie"]
   else
   end
-  main_menu
+  main_menu(order)
 end
 
 def drinks
@@ -90,7 +90,7 @@ def drinks
     order.push [2.99, "Root Beer"]
   else
   end
-  main_menu
+  main_menu(order)
 end
 
 def extras()
@@ -109,7 +109,7 @@ def extras()
     order.push [0.49, "Anchovies"]
   else
   end
-  main_menu
+  main_menu(order)
 end
 
 def main_menu(order)
@@ -118,16 +118,16 @@ print "> "
 select = gets.chomp.to_i
 
   if select == 1
-    pizza_menu
+    pizza_menu(order)
   elsif select == 2
     sides(order)
   elsif select == 3
-    deserts
+    deserts(order)
   elsif select == 4
-    drinks
+    drinks(order)
   elsif select == 5
-    extras
-  else main_menu
+    extras(order)
+  else
   end
 end
 
@@ -135,11 +135,11 @@ main_menu(order)
 
 puts "\n\n"
 #list items[]
-counter = 1
+counter = 0
 for counter in (0..order.length)
-  puts "$#{sprintf("%.02f", order[counter][1])} #{order[counter][0]}"
-  subtotal = subtotal + order[counter][1]
-  puts "\n\n"
+  puts "$#{sprintf("%.02f", order[counter][0])} #{order[counter][1]}"
+  subtotal = subtotal + order[counter][0]
+  puts "\n"
 end
 
 #Cost
