@@ -65,7 +65,7 @@ def sides(order)
   main_menu(order)
 end
 
-def deserts
+def deserts(order)
   puts "Select a desert to add.\n1: Cookie\n2: Brownie"
   print "> "
   select = gets.chomp.to_i
@@ -78,7 +78,7 @@ def deserts
   main_menu(order)
 end
 
-def drinks
+def drinks(order)
   puts "Select a soda to add. Sold as 2 liter bottles.\n1: Coke\n2: Pepsi\n3: Root Beer"
   print "> "
   select = gets.chomp.to_i
@@ -93,9 +93,9 @@ def drinks
   main_menu(order)
 end
 
-def extras()
+def extras(order)
   puts "Select an extra to add.\n1: Garlic Sauce\n2: Pizza Sauce\n3: Ranch Sauce\n4: Jalapeno peppers\n5: Anchovies"
-  print prompt
+  print "> "
   select = gets.chomp.to_i
   if select == 1
     order.push [0.49, "Garlic Sauce"]
