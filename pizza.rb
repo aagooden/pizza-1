@@ -29,9 +29,40 @@ def size_cost(size)
   end
 end
 
+#Add to pizza
+# => puts "Do you want to add any toppings? (Y/N)"
+# => IF yes then
+# what would you like meats (1), veggies (2), etc.
+#if input = 1, then X, if 2 then Y
+#Add toppings to a new pizza array
+#Would you like any more toppings? If y then repeat, if N then end.
 #ingredient_cost(array, cost)
-
+  #if array [0]
+  #do nothing
+  #else add +1 to cost use array[1,2,3].includes?
 #end
+
+#New idea:  Add ingredients to new pizza array, but add cost immediately. Could use first array slot [0] to determine cost.
+
+#Menu
+puts "What would you like to add to purchase? (Enter number)\n1: Pizza\n2: Sides\n3: Deserts\n4: Drinks\n5: Extras"
+print "> "
+select = gets.chomp
+
+if select == 1
+  #pizzas
+elsif select == 2
+  #Sides
+elsif select == 3
+  #Deserts
+elsif select == 4
+  #Drinks
+elsif select == 5
+  #Extras
+else
+  puts "Enter a valid selection. > "
+  select = gets.chomp
+end
 
 puts "How many pizzas would you like?"
 quantity = gets.chomp.to_i
@@ -43,7 +74,7 @@ bake_pizza = quantity
 
 while counter < quantity do
   counter += 1
-  sizeofpizza = size.sample
+  sizeofpizza = size.sample #change to input
   size_cost(sizeofpizza)
 
   puts "# #{counter}:  #{sizeofpizza} pizza with with #{double_pepperoni}#{meats.sample}, #{veggies.sample}, #{special.sample}, #{cheese}#{sauce.sample} sauce, and #{crusts.sample} crust."
