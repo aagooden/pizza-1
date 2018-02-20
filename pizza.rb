@@ -38,10 +38,10 @@ def pizza_menu(order)
     order.push [pizza_size.to_f, "Cheese Pizza"]
   elsif select == 3
     # pizza_size
-    order.push [pizza_size.to_f, "Supreme Pizza"]
+    order.push [(pizza_size.to_f + 2), "Supreme Pizza"]
   elsif select == 4
     # pizza_size
-    order.push == [pizza_size.to_f, "Meat Lover's Pizza"]
+    order.push == [(pizza_size.to_f + 2), "Meat Lover's Pizza"]
   #elsif select == 5
     #Custom pizza Menu
     #add $1.00 for each additional topping
@@ -57,7 +57,7 @@ def sides(order)
   if select == 1
     order.push [6.50, "Breadsticks"]
   elsif select == 2
-    order.push [6.50, "Cheesesticks", 6.50]
+    order.push [6.50, "Cheesesticks"]
   elsif select == 3
     order.push [8.00, "Wings"]
   else
@@ -87,7 +87,7 @@ def drinks(order)
   elsif select == 2
     order.push [2.99, "Pepsi (2L)"]
   elsif select == 3
-    order.push [2.99, "Root Beer"]
+    order.push [2.99, "Root Beer (2L)"]
   else
   end
   main_menu(order)
@@ -132,6 +132,7 @@ select = gets.chomp.to_i
 end
 
 main_menu(order)
+
 #Cost
 subtotal = 0.00.to_f
 tax_rate = 0.06
@@ -139,7 +140,6 @@ subtotal = subtotal.to_f
 delivery_fee = 2.50
 puts "\n\n"
 
-#list items[]
 counter = 0
 while counter < order.length
   puts "$#{sprintf("%.02f", order[counter][0])} #{order[counter][1]}"
@@ -151,4 +151,4 @@ puts "\nDelivery Fee: $#{sprintf("%.02f", delivery_fee)}"
 puts "Subtotal: $#{sprintf("%.02f", subtotal)}"
 puts "Tax: $#{sprintf("%.02f", subtotal * tax_rate)}"
 puts "Total: $#{sprintf("%.02f", subtotal * (1 + tax_rate) + delivery_fee)}"
-puts "\nSuggested Tip: #{sprintf("%.02f", subtotal * 0.10)}"
+puts "\nSuggested Tip: $#{sprintf("%.02f", subtotal * 0.10)}"
