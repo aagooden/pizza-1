@@ -5,34 +5,42 @@ sauce = ["regular", "cheese", "ranch", "BBQ"]
 special = ["three cheese blend", "toothpaste", "legos"]
 size = ["Small", "Medium", "Large", "Extra large"]
 
-order = Array.new
+order = [1]
 
-def cheese()
-  if [true, false].sample == true
-    return "extra cheese, "
-  end
-end
-
-def double_pepperoni()
-  if [true, false].sample == true
-    return "double pepperoni, "
-  end
-end
-
-def size_cost(size)
-  if size[0]
-    return 10.99
-  elsif size[1]
-    return 12.99
-  elsif size[2]
-    return 14.99
-  elsif size[3]
-    return 16.99
-  end
-end
+# def size_cost(size)
+#   if size[0]
+#     return 9.99
+#   elsif size[1]
+#     return 12.24
+#   elsif size[2]
+#     return 16.99
+#   elsif size[3]
+#     return 18.74
+#   end
+# end
 
 def pizza_menu
-  
+  puts "Select an option.\n1: Pepperoni Pizza\n2: Cheese Pizza\n3: Supreme Pizza\n4: Meat Lover's Pizza\n5: Custom Pizza"
+  print "> "
+  select = gets.chomp.to_i
+
+  #build pizza
+  #[price, name, size, toppings]
+
+  if select == 1
+    puts "What size?\n1: Small\n2: Medium\n3: Large\n4: Extra Large"
+  elsif select == 2
+    order.push
+  elsif select == 3
+    #
+  elsif select == 4
+    #
+  elsif select == 5
+    #Custom pizza Menu
+    #add $1.00 for each additional topping
+  else
+  end
+  main_menu
 end
 
 def sides(order)
@@ -40,15 +48,14 @@ def sides(order)
   print "> "
   select = gets.chomp.to_i
   if select == 1
-    order.push ["Breadsticks", 6.50]
+    order.push [6.50, "Breadsticks"]
   elsif select == 2
-    order.push ["Cheesesticks", 6.50]
+    order.push [6.50, "Cheesesticks", 6.50]
   elsif select == 3
-    order.push ["Wings", 6.50]
-    print order
+    order.push [8.00, "Wings"]
   else
   end
-  #return to Menu
+  main_menu
 end
 
 def deserts
@@ -56,66 +63,75 @@ def deserts
   print "> "
   select = gets.chomp.to_i
   if select == 1
-    order.push ["Cookie", 7.00]
+    order.push [7.00, "Cookie"]
   elsif select == 2
-    order.push ["Brownie", 7.00]
+    order.push [7.00, "Brownie"]
   else
   end
-  #return to Menu
+  main_menu
 end
 
 def drinks
-  puts "Select a soda to add. Sold as 2 liter bottles.\n1: Coke\n2: Pepsi"
+  puts "Select a soda to add. Sold as 2 liter bottles.\n1: Coke\n2: Pepsi\n3: Root Beer"
   print "> "
   select = gets.chomp.to_i
   if select == 1
-    order.push ["Coke (2L)", 2.99]
+    order.push [2.99, "Coke (2L)"]
   elsif select == 2
-    order.push ["Pepsi (2L)", 2.99]
+    order.push [2.99, "Pepsi (2L)"]
+  elsif select == 3
+    order.push [2.99, "Root Beer"]
   else
   end
-  #return to Menu
+  main_menu
 end
 
-def extras
+def extras()
   puts "Select an extra to add.\n1: Garlic Sauce\n2: Pizza Sauce\n3: Ranch Sauce\n4: Jalapeno peppers\n5: Anchovies"
   print prompt
   select = gets.chomp.to_i
   if select == 1
-    order.push ""
+    order.push [0.49, "Garlic Sauce"]
   elsif select == 2
-    order.push ""
+    order.push [0.49, "Pizza Sauce"]
+  elsif select == 3
+    order.push [0.49, "Ranch Sauce"]
+  elsif select == 4
+    order.push [0.49, "Jalapeno Peppers"]
+  elsif select == 5
+    order.push [0.49, "Anchovies"]
   else
   end
-  #return to Menu
+  main_menu
 end
 
-#Menu
+def main_menu(order)
 puts "What would you like to add to purchase? (Enter number)\n1: Pizza\n2: Sides\n3: Deserts\n4: Drinks\n5: Extras"
 print "> "
 select = gets.chomp.to_i
 
-if select == 1
-  pizza_menu
-elsif select == 2
-  sides(order)
-elsif select == 3
-  deserts
-elsif select == 4
-  drinks
-elsif select == 5
-  extras
-else
-  puts "Enter a valid selection.\n> "
-  select = gets.chomp
+  if select == 1
+    pizza_menu
+  elsif select == 2
+    sides(order)
+  elsif select == 3
+    deserts
+  elsif select == 4
+    drinks
+  elsif select == 5
+    extras
+  else main_menu
+  end
 end
 
+main_menu(order)
+
 puts "\n\n"
-#list items
-def
-  x = 0
-  puts "$#{sprintf("%.02f", order[x][1])} #{order[x][0]}"
-  subtotal = subtotal + order[x][1]
+#list items[]
+counter = 0
+for counter in (0..order.length)
+  puts "$#{sprintf("%.02f", order[counter][1])} #{order[counter][0]}"
+  subtotal = subtotal + order[counter][1]
   puts "\n\n"
 end
 
