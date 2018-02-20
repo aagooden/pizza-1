@@ -5,6 +5,8 @@ sauce = ["regular", "cheese", "ranch", "BBQ"]
 special = ["three cheese blend", "toothpaste", "legos"]
 size = ["Small", "Medium", "Large", "Extra large"]
 
+order = Array.new
+
 def cheese()
   if [true, false].sample == true
     return "extra cheese, "
@@ -29,62 +31,101 @@ def size_cost(size)
   end
 end
 
-#Add to pizza
-# => puts "Do you want to add any toppings? (Y/N)"
-# => IF yes then
-# what would you like meats (1), veggies (2), etc.
-#if input = 1, then X, if 2 then Y
-#Add toppings to a new pizza array
-#Would you like any more toppings? If y then repeat, if N then end.
-#ingredient_cost(array, cost)
-  #if array [0]
-  #do nothing
-  #else add +1 to cost use array[1,2,3].includes?
-#end
+def pizza_menu
+  
+end
 
-#New idea:  Add ingredients to new pizza array, but add cost immediately. Could use first array slot [0] to determine cost.
+def sides(order)
+  puts "Select a side to add.\n1: Breadsticks\n2: Cheesesticks\n3: Chicken wings"
+  print "> "
+  select = gets.chomp.to_i
+  if select == 1
+    order.push ["Breadsticks", 6.50]
+  elsif select == 2
+    order.push ["Cheesesticks", 6.50]
+  elsif select == 3
+    order.push ["Wings", 6.50]
+    print order
+  else
+  end
+  #return to Menu
+end
+
+def deserts
+  puts "Select a desert to add.\n1: Cookie\n2: Brownie"
+  print "> "
+  select = gets.chomp.to_i
+  if select == 1
+    order.push ["Cookie", 7.00]
+  elsif select == 2
+    order.push ["Brownie", 7.00]
+  else
+  end
+  #return to Menu
+end
+
+def drinks
+  puts "Select a soda to add. Sold as 2 liter bottles.\n1: Coke\n2: Pepsi"
+  print "> "
+  select = gets.chomp.to_i
+  if select == 1
+    order.push ["Coke (2L)", 2.99]
+  elsif select == 2
+    order.push ["Pepsi (2L)", 2.99]
+  else
+  end
+  #return to Menu
+end
+
+def extras
+  puts "Select an extra to add.\n1: Garlic Sauce\n2: Pizza Sauce\n3: Ranch Sauce\n4: Jalapeno peppers\n5: Anchovies"
+  print prompt
+  select = gets.chomp.to_i
+  if select == 1
+    order.push ""
+  elsif select == 2
+    order.push ""
+  else
+  end
+  #return to Menu
+end
 
 #Menu
 puts "What would you like to add to purchase? (Enter number)\n1: Pizza\n2: Sides\n3: Deserts\n4: Drinks\n5: Extras"
 print "> "
-select = gets.chomp
+select = gets.chomp.to_i
 
 if select == 1
-  #pizzas
+  pizza_menu
 elsif select == 2
-  #Sides
+  sides(order)
 elsif select == 3
-  #Deserts
+  deserts
 elsif select == 4
-  #Drinks
+  drinks
 elsif select == 5
-  #Extras
+  extras
 else
-  puts "Enter a valid selection. > "
+  puts "Enter a valid selection.\n> "
   select = gets.chomp
 end
 
-puts "How many pizzas would you like?"
-quantity = gets.chomp.to_i
-
-cost = 0.00.to_f #subtotal
-tax_rate = 0.06
-counter = 0
-bake_pizza = quantity
-
-while counter < quantity do
-  counter += 1
-  sizeofpizza = size.sample #change to input
-  size_cost(sizeofpizza)
-
-  puts "# #{counter}:  #{sizeofpizza} pizza with with #{double_pepperoni}#{meats.sample}, #{veggies.sample}, #{special.sample}, #{cheese}#{sauce.sample} sauce, and #{crusts.sample} crust."
-  cost = cost + size_cost(sizeofpizza).to_f
+puts "\n\n"
+#list items
+def
+  x = 0
+  puts "$#{sprintf("%.02f", order[x][1])} #{order[x][0]}"
+  subtotal = subtotal + order[x][1]
+  puts "\n\n"
 end
-puts "\n"
 
-delivery_fee = quantity * 2
+#Cost
+subtotal = 0.00.to_f
+tax_rate = 0.06
+subtotal = subtotal.to_f
+delivery_fee = 2.50
 puts "Delivery Fee: $#{sprintf("%.02f", delivery_fee)}"
-puts "Subtotal: $#{sprintf("%.02f", cost)}"
-puts "Tax: $#{sprintf("%.02f", cost * tax_rate)}"#tax
-puts "Total cost is $#{sprintf("%.02f", cost * (1 + tax_rate) + delivery_fee)}"
-puts "\nSuggested Tip: #{sprintf("%.02f", cost * 0.10)}"
+puts "Subtotal: $#{sprintf("%.02f", subtotal)}"
+puts "Tax: $#{sprintf("%.02f", subtotal * tax_rate)}"
+puts "Total: $#{sprintf("%.02f", subtotal * (1 + tax_rate) + delivery_fee)}"
+puts "\nSuggested Tip: #{sprintf("%.02f", subtotal * 0.10)}"
