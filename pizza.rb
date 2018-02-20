@@ -7,20 +7,23 @@ size = ["Small", "Medium", "Large", "Extra large"]
 
 order = [1]
 
-# def size_cost(size)
-#   if size[0]
-#     return 9.99
-#   elsif size[1]
-#     return 12.24
-#   elsif size[2]
-#     return 16.99
-#   elsif size[3]
-#     return 18.74
-#   end
-# end
+def pizza_size
+  puts "What size?\n1: Small\n2: Medium\n3: Large\n4: Extra Large"
+  print "> "
+  select = gets.chomp.to_i
+    if select == 1
+      return 9.99
+    elsif select == 2
+      return 12.24
+    elsif select == 3
+      return 16.99
+    elsif select == 4
+      return 18.74
+    end
+end
 
 def pizza_menu
-  puts "Select an option.\n1: Pepperoni Pizza\n2: Cheese Pizza\n3: Supreme Pizza\n4: Meat Lover's Pizza\n5: Custom Pizza"
+  puts "Select an option.\n1: Pepperoni Pizza\n2: Cheese Pizza\n3: Supreme Pizza\n4: Meat Lover's Pizza"#\n5: Custom Pizza"
   print "> "
   select = gets.chomp.to_i
 
@@ -28,14 +31,18 @@ def pizza_menu
   #[price, name, size, toppings]
 
   if select == 1
-    puts "What size?\n1: Small\n2: Medium\n3: Large\n4: Extra Large"
+    pizza_size
+    order.push [size, "Pepperoni Pizza"]
   elsif select == 2
-    order.push
+    pizza_size
+    order.push [size, "Cheese Pizza"]
   elsif select == 3
-    #
+    pizza_size
+    order.push [size, "Supreme Pizza"]
   elsif select == 4
-    #
-  elsif select == 5
+    pizza_size
+    order.push == [size, "Meat Lover's Pizza"]
+  #elsif select == 5
     #Custom pizza Menu
     #add $1.00 for each additional topping
   else
@@ -128,7 +135,7 @@ main_menu(order)
 
 puts "\n\n"
 #list items[]
-counter = 0
+counter = 1
 for counter in (0..order.length)
   puts "$#{sprintf("%.02f", order[counter][1])} #{order[counter][0]}"
   subtotal = subtotal + order[counter][1]
