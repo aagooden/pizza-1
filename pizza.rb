@@ -5,7 +5,7 @@ sauce = ["regular", "cheese", "ranch", "BBQ"]
 special = ["three cheese blend", "toothpaste", "legos"]
 size = ["Small", "Medium", "Large", "Extra large"]
 
-order = [1]
+order = []
 
 def pizza_size
   puts "What size?\n1: Small\n2: Medium\n3: Large\n4: Extra Large"
@@ -22,7 +22,7 @@ def pizza_size
     end
 end
 
-def pizza_menu
+def pizza_menu(order)
   puts "Select an option.\n1: Pepperoni Pizza\n2: Cheese Pizza\n3: Supreme Pizza\n4: Meat Lover's Pizza"#\n5: Custom Pizza"
   print "> "
   select = gets.chomp.to_i
@@ -32,16 +32,16 @@ def pizza_menu
 
   if select == 1
     pizza_size
-    order.push [size.to_f, "Pepperoni Pizza"]
+    order.push [pizza_size.to_f, "Pepperoni Pizza"]
   elsif select == 2
     pizza_size
-    order.push [size.to_f, "Cheese Pizza"]
+    order.push [pizza_size.to_f, "Cheese Pizza"]
   elsif select == 3
     pizza_size
-    order.push [size.to_f, "Supreme Pizza"]
+    order.push [pizza_size.to_f, "Supreme Pizza"]
   elsif select == 4
     pizza_size
-    order.push == [size.to_f, "Meat Lover's Pizza"]
+    order.push == [pizza_size.to_f, "Meat Lover's Pizza"]
   #elsif select == 5
     #Custom pizza Menu
     #add $1.00 for each additional topping
@@ -132,21 +132,22 @@ select = gets.chomp.to_i
 end
 
 main_menu(order)
-
-puts "\n\n"
-#list items[]
-counter = 0
-for counter in (0..order.length)
-  puts "$#{sprintf("%.02f", order[counter][0])} #{order[counter][1]}"
-  subtotal = subtotal + order[counter][0]
-  puts "\n"
-end
-
 #Cost
 subtotal = 0.00.to_f
 tax_rate = 0.06
 subtotal = subtotal.to_f
 delivery_fee = 2.50
+puts "\n\n"
+
+#list items[]
+counter = 0
+while counter < order.length
+  puts "$#{sprintf("%.02f", order[counter][0])} #{order[counter][1]}"
+  subtotal = subtotal + order[counter][0]
+  counter = counter + 1
+  puts "\n"
+end
+
 puts "Delivery Fee: $#{sprintf("%.02f", delivery_fee)}"
 puts "Subtotal: $#{sprintf("%.02f", subtotal)}"
 puts "Tax: $#{sprintf("%.02f", subtotal * tax_rate)}"
