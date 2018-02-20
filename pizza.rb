@@ -1,9 +1,9 @@
-crusts = ["regular", "stuffed", "pretzel", "bacon wrapped"]
-meats = ["sausage", "pepperoni", "bacon", "ham", "beef"]
-veggies = ["peppers", "banana peppers", "olives", "pineapple", "mushrooms"]
-sauce = ["regular", "cheese", "ranch", "BBQ"]
-special = ["three cheese blend", "toothpaste", "legos"]
-size = ["Small", "Medium", "Large", "Extra large"]
+# crusts = ["regular", "stuffed", "pretzel", "bacon wrapped"]
+# meats = ["sausage", "pepperoni", "bacon", "ham", "beef"]
+# veggies = ["peppers", "banana peppers", "olives", "pineapple", "mushrooms"]
+# sauce = ["regular", "cheese", "ranch", "BBQ"]
+# special = ["three cheese blend", "toothpaste", "legos"]
+# size = ["Small", "Medium", "Large", "Extra large"]
 
 order = []
 
@@ -31,16 +31,16 @@ def pizza_menu(order)
   #[price, name, size, toppings]
 
   if select == 1
-    pizza_size
+    # pizza_size
     order.push [pizza_size.to_f, "Pepperoni Pizza"]
   elsif select == 2
-    pizza_size
+    # pizza_size
     order.push [pizza_size.to_f, "Cheese Pizza"]
   elsif select == 3
-    pizza_size
+    # pizza_size
     order.push [pizza_size.to_f, "Supreme Pizza"]
   elsif select == 4
-    pizza_size
+    # pizza_size
     order.push == [pizza_size.to_f, "Meat Lover's Pizza"]
   #elsif select == 5
     #Custom pizza Menu
@@ -145,10 +145,9 @@ while counter < order.length
   puts "$#{sprintf("%.02f", order[counter][0])} #{order[counter][1]}"
   subtotal = subtotal + order[counter][0]
   counter = counter + 1
-  puts "\n"
 end
 
-puts "Delivery Fee: $#{sprintf("%.02f", delivery_fee)}"
+puts "\nDelivery Fee: $#{sprintf("%.02f", delivery_fee)}"
 puts "Subtotal: $#{sprintf("%.02f", subtotal)}"
 puts "Tax: $#{sprintf("%.02f", subtotal * tax_rate)}"
 puts "Total: $#{sprintf("%.02f", subtotal * (1 + tax_rate) + delivery_fee)}"
