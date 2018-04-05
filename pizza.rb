@@ -1,11 +1,20 @@
-# crusts = ["regular", "stuffed", "pretzel", "bacon wrapped"]
-# meats = ["sausage", "pepperoni", "bacon", "ham", "beef"]
-# veggies = ["peppers", "banana peppers", "olives", "pineapple", "mushrooms"]
-# sauce = ["regular", "cheese", "ranch", "BBQ"]
-# special = ["three cheese blend", "toothpaste", "legos"]
-# size = ["Small", "Medium", "Large", "Extra large"]
+crusts = ["regular", "stuffed", "pretzel", "bacon wrapped"]
+meats = ["sausage", "pepperoni", "bacon", "ham", "beef"]
+veggies = ["peppers", "banana peppers", "olives", "pineapple", "mushrooms"]
+sauce = ["regular", "cheese", "ranch", "BBQ"]
+special = ["three cheese blend", "toothpaste", "legos"]
+size = ["Small", "Medium", "Large", "Extra large"]
 
 order = []
+
+=begin
+
+ Nest hashes of hashes. Iterate over it in erb to display options; use this for multiple pages. Start with sides for simplicity and build up from there.
+
+menu = { "Pizza" => { "pepperoni" => $5, "cheese" => $4, supreme => $10 }, "Sides" => { "Cheesesticks" => $6, "Breadsticks" => $6, "Somestuff" => $7 } }
+
+
+=end
 
 def pizza_size
   puts "What size?\n1: Small\n2: Medium\n3: Large\n4: Extra Large"
@@ -29,6 +38,12 @@ def pizza_menu(order)
 
   #build pizza
   #[price, name, size, toppings]
+
+def custom_pizza
+  puts "Select your toppings.\n1: Meats\n2: Veggies\n3: Sauce\n4: Special\n5: Crust"
+  print "> "
+
+end
 
   if select == 1
     # pizza_size
@@ -131,7 +146,7 @@ select = gets.chomp.to_i
   end
 end
 
-main_menu(order)
+# main_menu(order)
 
 #Cost
 subtotal = 0.00.to_f
@@ -139,7 +154,7 @@ tax_rate = 0.06
 subtotal = subtotal.to_f
 delivery_fee = 2.50
 puts "\n\n"
-
+#puts "Current order is #{order}"
 counter = 0
 while counter < order.length
   puts "$#{sprintf("%.02f", order[counter][0])} #{order[counter][1]}"
@@ -147,8 +162,8 @@ while counter < order.length
   counter = counter + 1
 end
 
-puts "\nDelivery Fee: $#{sprintf("%.02f", delivery_fee)}"
-puts "Subtotal: $#{sprintf("%.02f", subtotal)}"
-puts "Tax: $#{sprintf("%.02f", subtotal * tax_rate)}"
-puts "Total: $#{sprintf("%.02f", subtotal * (1 + tax_rate) + delivery_fee)}"
-puts "\nSuggested Tip: $#{sprintf("%.02f", subtotal * 0.10)}"
+# puts "\nDelivery Fee: $#{sprintf("%.02f", delivery_fee)}"
+# puts "Subtotal: $#{sprintf("%.02f", subtotal)}"
+# puts "Tax: $#{sprintf("%.02f", subtotal * tax_rate)}"
+# puts "Total: $#{sprintf("%.02f", subtotal * (1 + tax_rate) + delivery_fee)}"
+# puts "\nSuggested Tip: $#{sprintf("%.02f", subtotal * 0.10)}"
