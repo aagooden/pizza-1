@@ -21,3 +21,8 @@ post '/add_to_order' do
   add_to_order(params[:selection], session[:master_order])
   redirect '/menu'
 end
+
+# This section used for debugging.
+post '/placeholder' do
+  erb :debug, locals: {params:params}
+end
