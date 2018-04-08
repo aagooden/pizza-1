@@ -1,5 +1,16 @@
 master_order = Array.new
 
+ def debug_in_terminal
+   puts """
+   ***************************************************
+   Session order class: #{session[:master_order].class}
+   Session order data: #{session[:master_order]}
+   Current params: #{params}
+   ***************************************************
+   """
+ end
+
+
 def pizza_menu(order)
   puts "Select an option.\n1: Pepperoni Pizza\n2: Cheese Pizza\n3: Supreme Pizza\n4: Meat Lover's Pizza"#\n5: Custom Pizza"
   print "> "
@@ -16,23 +27,24 @@ def pizza_menu(order)
   main_menu(order)
 end
 
-=begin
+def add_to_order(params, order)
+  # push the item into a master order hash; item => [item name, [array of ingredients], price];
+  # iterate over master hash to determine price for subtotal
+  # order = { "items" => [item1, item2, item3], "price" = [price1, price2, price3], "quantity" => [quanity1, quanity2, quantity3]}
 
-def add_item_to_order(params)
-  push the item into a master order hash; item => [item name, [array of ingredients], price];
-  iterate over master hash to determine price for subtotal
+  order["items"] += params[0]
+  order["price"] += params[1]
+  # order["quantity"] << pararms[2]
+  return order
 end
 
-=end
+
 
 =begin
 Nest hashes of hashes. Iterate over it in erb to display options; use this for multiple pages. Start with sides for simplicity and build up from there.
 =end
 
-def add_to_order(item, order)
-  order << item
-end
-
+=begin
 def calc_total(params)
   money_hash = {
     "delivery_fee" => 0.0,
@@ -63,7 +75,7 @@ def calc_total(params)
 
   return money_hash
 end
-
+=end
 def menu_return()
  menu = {
          "Pizza" => {

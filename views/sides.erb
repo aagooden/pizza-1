@@ -6,7 +6,7 @@
   </head>
   <body>
     <h2>Select an item</h2>
-    <form class="" action="/placeholder" method="post">
+    <form class="" action="/add_to_order" method="post">
       <!-- Loop through hash to show items and their price.
       <%#Something like: key Price: value %>
       <%#Clicking brings up small area to confirm adding item to order with input[number] for quantity and a input[submit] add button and input[submit] cancel button. %>-->
@@ -19,9 +19,8 @@
 
       <ul>
         <% menu["Sides"].each do |key, value| %>
-          <!-- Do stuff -->
           <li>
-            <input type="radio" name="side" required value="<%=key%>"> $<%= sprintf("%.02f",value)%> <%=key%>
+            <input type="radio" name="selection[]" required value="<%=key%>, <%=value%>"> $<%= sprintf("%.02f",value)%> <%=key%>
           </li>
         <%end%>
       </ul>

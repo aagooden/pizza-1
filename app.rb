@@ -4,12 +4,16 @@ require_relative 'pizza.rb'
 enable :sessions
 
 get '/' do
-  session[:master_order] = Array.new
+  if session[:master_order].class == NilClass
+    session[:master_order] = {"items" => [], "price" => []}
+  end
+  debug_in_terminal
   erb :index
 end
 
 get '/menu' do
-  erb :menu
+  debug_in_terminal
+  erb :menu, locals: {order:session[:order]}
 end
 
 get '/sides' do
@@ -18,11 +22,14 @@ get '/sides' do
 end
 
 post '/add_to_order' do
-  add_to_order(params[:selection], session[:master_order])
+  debug_in_terminal
+  add_to_order(params[:selection[]], session[:master_order])
+
   redirect '/menu'
 end
 
 # This section used for debugging.
 post '/placeholder' do
+  debug_in_terminal
   erb :debug, locals: {params:params}
 end
