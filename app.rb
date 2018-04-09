@@ -23,7 +23,13 @@ end
 
 post '/add_to_order' do
   debug_in_terminal
-  add_to_order(params[:selection[]], session[:master_order])
+  input = convert_input(params[:selection])
+  puts """
+  input data: #{input}
+  input class: #{input.class}
+  ***************************************************
+  """
+  add_to_order(input, session[:master_order])
 
   redirect '/menu'
 end
