@@ -35,7 +35,7 @@ def add_to_order(params, order)
   # order["price"].push params[1]
   # order["quantity"] << pararms[2]
   change = false
-  
+
   order.each do |index|
     if params[0] === index[0]
       index[2] += params[2]
@@ -47,6 +47,15 @@ def add_to_order(params, order)
     order.push params
   end
 
+  return order
+end
+
+def add_custom(params, ingreds, order)
+  params << ingreds
+  ingreds.length.times do
+    params[1] += 1
+  end
+  order.push params
   return order
 end
 

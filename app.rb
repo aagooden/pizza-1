@@ -50,8 +50,21 @@ post '/add_to_order' do
   redirect '/menu'
 end
 
+post '/add_custom' do
+  debug_in_terminal
+  input = convert_input(params[:selection])
+  puts """
+  input data: #{input}
+  input class: #{input.class}
+  ***************************************************
+  """
+  add_custom(input, params[:ingreds], session[:master_order])
+
+  redirect '/menu'
+end
+
 get '/checkout' do
-  
+
   erb :cart, locals: {order:session[:master_order]}
 end
 
