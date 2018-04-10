@@ -68,6 +68,14 @@ get '/checkout' do
   erb :cart, locals: {order:session[:master_order]}
 end
 
+get '/delivery' do
+  erb :deliver, locals: {order:session{:master_order}}
+end
+
+get '/pickup' do
+  erb :pickup, locals: {order:session{:master_order}}
+end
+
 # This section used for debugging.
 post '/placeholder' do
   debug_in_terminal

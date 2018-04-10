@@ -6,20 +6,27 @@
   </head>
   <body>
     <table>
-    <% order.each do |food|%>
-      <tr>
-        <td>$<%= sprintf("%.02f",food[1])%></td>
-        <td>
-          <% if food[0] == "custom pizza" %>
-            <%= food[0].capitalize%>
-            <!-- food[0].each use ul li to show each ingred -->
-          <% else %>
-            <%= food[0].capitalize%>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+      <% order.each do |food|%>
+        <tr>
+          <td>$<%= sprintf("%.02f",(food[1] * food[2]))%></td>
+          <td>
+            <% if food[0] == "custom pizza" %>
+              <%= food[0].capitalize%>
+              <ul>
+                <% food[3].each do |ingred| %>
+                  <li> <%=ingred%> </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <%= food[0].capitalize%>
+            <% end %>
+          </td>
+          <td>Qty: <%= food[2] %></td>
+        </tr>
+      <% end %>
+    </table>
+    <a href="/delivery">Order For Delivery</a>
+    <a href="/pickup">Order for Pickup</a>
   <a href="/menu"><button>Return to menu</button></a>
   </body>
 </html>
