@@ -25,6 +25,11 @@
         </tr>
       <% end %>
     </table>
+    <ul>
+      <li>Subtotal: $<%= sprintf("%.02f",cost["subtotal"])%></li>
+      <li>Tax: $<%=sprintf("%.02f",cost["tax"])%></li>
+      <li>Total: $<%=sprintf("%.02f",cost["total"])%></li>
+    </ul>
     <a href="/delivery">Order For Delivery</a>
     <a href="/pickup">Order for Pickup</a>
   <a href="/menu"><button>Return to menu</button></a>

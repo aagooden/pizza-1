@@ -101,7 +101,6 @@ end
 Nest hashes of hashes. Iterate over it in erb to display options; use this for multiple pages. Start with sides for simplicity and build up from there.
 =end
 
-=begin
 def calc_total(params)
   money_hash = {
     "delivery_fee" => 0.0,
@@ -111,23 +110,12 @@ def calc_total(params)
     "tip" => 0.0
   }
 
-  #Cost
-  subtotal = 0.00.to_f
   tax_rate = 0.06
-  subtotal = subtotal.to_f
-  delivery_fee = 2.50
-
-  order.length times do
-    puts "$#{sprintf("%.02f", order[counter][0])} #{order[counter][1]}"
-    subtotal += order[counter][0]
+  params.each do |item|
+    money_hash["subtotal"] += (item[1] * item[2])
   end
-
-  puts "\nDelivery Fee: $#{sprintf("%.02f", delivery_fee)}"
-  puts "Subtotal: $#{sprintf("%.02f", subtotal)}"
-  puts "Tax: $#{sprintf("%.02f", subtotal * tax_rate)}"
-  puts "Total: $#{sprintf("%.02f", subtotal * (1 + tax_rate) + delivery_fee)}"
-  puts "\nSuggested Tip: $#{sprintf("%.02f", subtotal * 0.10)}"
+  money_hash["tax"] = money_hash["subtotal"] * tax_rate
+  money_hash["total"] = money_hash["tax"] + money_hash["subtotal"]
 
   return money_hash
 end
-=end

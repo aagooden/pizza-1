@@ -58,8 +58,8 @@ post '/add_custom' do
 end
 
 get '/checkout' do
-
-  erb :cart, locals: {order:session[:master_order]}
+  cost = calc_total(session[:master_order])
+  erb :cart, locals: {order:session[:master_order], cost: cost}
 end
 
 get '/delivery' do
