@@ -27,13 +27,7 @@ def convert_input(input)
 end
 
 def add_to_order(params, order)
-  # push the item into a master order hash; item => [item name, [array of ingredients], price];
-  # iterate over master hash to determine price for subtotal
-  # order = { "items" => [item1, item2, item3], "price" = [price1, price2, price3], "quantity" => [quanity1, quanity2, quantity3]}
-
-  # order["items"].push params[0]
-  # order["price"].push params[1]
-  # order["quantity"] << pararms[2]
+  # push the item into a master order hash; item => [item name, price, quanity, [array of ingredients]]
   change = false
 
   order.each do |index|

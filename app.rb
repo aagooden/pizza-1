@@ -25,12 +25,6 @@ get '/custom_pizza' do
   erb :custom_pizza, locals: {menu:menu_return}
 end
 
-post '/sides_selection' do
-  debug_in_terminal
-  selection = params[:selection]
-  redirect '/sides?menu_select=' + selection
-end
-
 get '/sides' do
   debug_in_terminal
   category = params[:category]
