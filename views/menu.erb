@@ -6,36 +6,15 @@
   </head>
   <body>
     <ul>
-      <li><a href="/pizza">Pizza</a></li>
-      <li><a href="/sides">Sides</a></li>
-      <li><a href="/drinks">beverages</a></li>
-      <li><a href="/deserts">deserts</a></li>
-      <li><a href="/extras">Extras</a></li>
+      <% menu.each do |key, value| %>
+      <!-- |key, value| prevents displaying whole menu hash -->
+        <li><a href="/sides?category=<%=key%>"><%=key.capitalize%></a></li>
+      <% end %>
+      <!-- <input type="submit" value="Choose category"> -->
     </ul>
-    <form class="" action="/sides_selection" method="post">
-      <ul>
-        <% menu.each do |key, value| %>
-          <li>
-            <%= key %>
-            <input type="radio" name="selection" value="<%=key%>">
-          </li>
-        <% end %>
-        <input type="submit" value="Choose category">
-      </ul>
-    </form>
-    <!-- <form class="" action="/menu_selection" method="post">
-      <ul>
-        <%# menu.each do |key, value| %>
-        <li>
-          <input type="radio" name="menu_selection" required value="<%#=key%>"> <%#=key.capitalize%>
-        </li>
-        <%#end%>
-      </ul>
-    </form>-->
     Current order:
     <% order.each do |food|%>
-      <br>
-      $<%= sprintf("%.02f",food[1])%> <%= food[0]%>
+      <br>$<%= sprintf("%.02f",food[1])%> <%= food[0]%>
     <% end %>
   </body>
 </html>

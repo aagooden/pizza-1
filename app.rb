@@ -30,8 +30,8 @@ post '/sides_selection' do
 end
 
 get '/sides' do
-  menu_select = params[:menu_select]
-  erb :sides, locals: {menu:menu_return, selection:menu_select}
+  category = params[:category]
+  erb :sides, locals: {menu:menu_return, selection:category}
 end
 
 post '/add_to_order' do
