@@ -17,19 +17,23 @@ get '/menu' do
 end
 
 get '/pizza' do
+  debug_in_terminal
   erb :pizza, locals: {menu:menu_return}
 end
 
 get '/custom_pizza' do
+  debug_in_terminal
   erb :custom_pizza, locals: {menu:menu_return}
 end
 
 post '/sides_selection' do
+  debug_in_terminal
   selection = params[:selection]
   redirect '/sides?menu_select=' + selection
 end
 
 get '/sides' do
+  debug_in_terminal
   category = params[:category]
   erb :sides, locals: {menu:menu_return, selection:category}
 end
