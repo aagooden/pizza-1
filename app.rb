@@ -16,13 +16,12 @@ get '/menu' do
   erb :menu, locals: {menu:menu_return, order:session[:master_order]}
 end
 
-get '/pizza' do
-  debug_in_terminal
-  erb :pizza, locals: {menu:menu_return}
-end
-
 get '/custom_pizza' do
   debug_in_terminal
+  puts """
+  #{menu_return["custom"]}
+  ****************************************************
+  """
   erb :custom_pizza, locals: {menu:menu_return}
 end
 

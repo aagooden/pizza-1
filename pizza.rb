@@ -12,9 +12,13 @@ master_order = Array.new
 
 def convert_input(string)
   #Converts params from ERB (string) into a usable array.
-  output = string.split(",")
-  output[1] = output[1].to_f #This index will be used to show cost of item.
-  return output
+  if string.class == Array
+    return string
+  else
+    output = string.split(",")
+    output[1] = output[1].to_f #This index will be used to show cost of item.
+    return output
+  end
 end
 
 def add_to_order(params, order)
@@ -36,22 +40,22 @@ def menu_return()
       "pepperoni" => 5.00,
       "cheese" => 4.00,
       "supreme" => 10.00,
-=begin
-      "custom" => {
-        "size" => {
-          "small" => 9.99,
-          "medium" => 12.24,
-          "large" => 16.99,
-          "extra large" => 18.74
-        },
-        "meats" => ["pepperoni","sausage", "italian sausage", "bacon", "ham", "beef"],
-        "veggies" => ["peppers", "banana peppers", "olives", "pineapple", "mushrooms"],
-        "crusts" => ["regular", "stuffed", "pretzel", "bacon wrapped"],
-        "sauce" => ["regular", "cheese", "ranch", "BBQ"],
-        "special" => ["three cheese blend", "toothpaste", "legos"],
-      }
-=end
     },
+
+    "size" => {
+      "small" => 9.99,
+      "medium" => 12.24,
+      "large" => 16.99,
+      "extra large" => 18.74
+    },
+    "custom" => {
+      "meats" => ["pepperoni","sausage", "italian sausage", "bacon", "ham", "beef"],
+      "veggies" => ["peppers", "banana peppers", "olives", "pineapple", "mushrooms"],
+      "crusts" => ["regular", "stuffed", "pretzel", "bacon wrapped"],
+      "sauce" => ["regular", "cheese", "ranch", "BBQ"],
+      "special" => ["three cheese blend", "toothpaste", "legos"],
+    },
+
     "sides" => {
       "Cheesesticks" => 6.50,
       "Breadsticks" => 6.50,

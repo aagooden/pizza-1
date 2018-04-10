@@ -7,8 +7,10 @@
   <body>
     <ul>
       <% menu.each do |key, value| %>
-      <!-- |key, value| prevents displaying whole menu hash -->
-        <li><a href="/sides?category=<%=key%>"><%=key.capitalize%></a></li>
+        <!-- |key, value| prevents displaying whole menu hash -->
+        <% if key != "size" && key != "custom" %>
+          <li><a href="/sides?category=<%=key%>"><%=key.capitalize%></a></li>
+        <% end %>
       <% end %>
     </ul>
     Current order:<br>
