@@ -9,7 +9,7 @@
       <% menu.each do |key, value| %>
         <!-- |key, value| prevents displaying whole menu hash -->
         <% if key != "size" && key != "custom" %>
-          <li><a href="/sides?category=<%=key%>"><%=key.capitalize%></a></li>
+          <li><a href="/sides?category=<%=key%>"><button type="button"><%=key.capitalize%></button></a></li>
         <% end %>
       <% end %>
     </ul>
@@ -18,9 +18,17 @@
     <% order.each do |food|%>
       <tr>
         <td>$<%= sprintf("%.02f",food[1])%></td>
-        <td><%= food[0].capitalize%></td>
+        <td>
+          <% if food[0] == "custom pizza" %>
+            <%= food[0].capitalize%>
+            <!-- food[0].each use ul li to show each ingred -->
+          <% else %>
+            <%= food[0].capitalize%>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>
+    <a href="/checkout"> <button type="button">Checkout</button></a>
   </body>
 </html>

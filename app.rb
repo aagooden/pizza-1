@@ -50,6 +50,11 @@ post '/add_to_order' do
   redirect '/menu'
 end
 
+get '/checkout' do
+  
+  erb :cart, locals: {order:session[:master_order]}
+end
+
 # This section used for debugging.
 post '/placeholder' do
   debug_in_terminal

@@ -6,15 +6,15 @@
   </head>
   <body>
     <h2>Select an item</h2>
-    <form class="" action="/add_to_order" method="post">
+    <form action="/add_to_order" method="post">
       <input type="hidden" name="selection[]" value="custom pizza">
       <input type="hidden" name="selection[]" value="12.99">
       <ul>
         <% menu["custom"].each do |key, value| %>
-        <li><%=key%>
+        <li><%=key.capitalize%>
           <ul>
             <% value.each do |ingred| %>
-            <li> <input type="checkbox" name="selection[]" value="<%=ingred%>"> <%=ingred%></li>
+            <li> <input type="checkbox" name="selection[]" value="<%=ingred%>"> <%=ingred.capitalize%></li>
             <% end %>
           </ul>
         </li>
@@ -22,8 +22,6 @@
       </ul>
       <input type="submit" name="" value="Add this item">
     </form>
-    <form class="" action="/custom_pizza" method="get">
-      <input type="submit" value="Custom Pizza">
-    </form>
+    <a href="/menu"><button>Return to menu</button></a>
   </body>
 </html>

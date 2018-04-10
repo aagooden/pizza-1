@@ -5,6 +5,21 @@
     <title></title>
   </head>
   <body>
-    
+    <table>
+    <% order.each do |food|%>
+      <tr>
+        <td>$<%= sprintf("%.02f",food[1])%></td>
+        <td>
+          <% if food[0] == "custom pizza" %>
+            <%= food[0].capitalize%>
+            <!-- food[0].each use ul li to show each ingred -->
+          <% else %>
+            <%= food[0].capitalize%>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <a href="/menu"><button>Return to menu</button></a>
   </body>
 </html>
