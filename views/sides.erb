@@ -18,7 +18,7 @@
       <%#end%>
 
       <ul>
-        <% menu["Sides"].each do |key, value| %>
+        <% menu[selection].each do |key, value| %>
           <li>
             <input type="radio" name="selection" required value="<%=key%>, <%=value%>"> $<%= sprintf("%.02f",value)%> <%=key%>
           </li>

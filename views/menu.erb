@@ -12,6 +12,17 @@
       <li><a href="/deserts">deserts</a></li>
       <li><a href="/extras">Extras</a></li>
     </ul>
+    <form class="" action="/sides_selection" method="post">
+      <ul>
+        <% menu.each do |key, value| %>
+          <li>
+            <%= key %>
+            <input type="radio" name="selection" value="<%=key%>">
+          </li>
+        <% end %>
+        <input type="submit" value="Choose category">
+      </ul>
+    </form>
     <!-- <form class="" action="/menu_selection" method="post">
       <ul>
         <%# menu.each do |key, value| %>

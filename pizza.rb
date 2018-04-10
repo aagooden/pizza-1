@@ -32,7 +32,7 @@ end
 
 def menu_return()
   menu = {
-    "Pizza" => {
+    "pizza" => {
       "pepperoni" => 5.00,
       "cheese" => 4.00,
       "supreme" => 10.00,
@@ -50,7 +50,7 @@ def menu_return()
         "special" => ["three cheese blend", "toothpaste", "legos"],
       }
     },
-    "Sides" => {
+    "sides" => {
       "Cheesesticks" => 6.50,
       "Breadsticks" => 6.50,
       "Wings" => 8.00
