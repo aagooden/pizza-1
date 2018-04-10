@@ -21,11 +21,8 @@ def convert_input(input)
     input.unshift b[0]
   end
 
-  puts " conversion input is #{input}"
   input[1] = input[1].to_f #This index will be used to show cost of item.
-  puts " conversion input is #{input}"
   input[2] = input[2].to_i #quanity of item
-  puts " conversion input is #{input}"
   return input
 end
 
@@ -37,8 +34,19 @@ def add_to_order(params, order)
   # order["items"].push params[0]
   # order["price"].push params[1]
   # order["quantity"] << pararms[2]
+  change = false
+  
+  order.each do |index|
+    if params[0] === index[0]
+      index[2] += params[2]
+      change = true
+    end
+  end
 
-  order.push params
+  if change == false
+    order.push params
+  end
+
   return order
 end
 
