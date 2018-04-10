@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>Select an item</h2>
+    <form class="" action="/add_to_order" method="post">
+      <ul>
+        <% menu["Sides"].each do |key, value| %>
+          <li>
+            <input type="radio" name="selection" required value="<%=key%>, <%=value%>"> $<%= sprintf("%.02f",value)%> <%=key%>
+          </li>
+        <%end%>
+      </ul>
+      <input type="submit" name="" value="Add this item">
+    </form>
+    <form class="" action="/custom_pizza" method="get">
+      <input type="submit" value="Custom Pizza">
+    </form>
+  </body>
+</html>

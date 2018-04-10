@@ -12,6 +12,19 @@
       <li><a href="/deserts">deserts</a></li>
       <li><a href="/extras">Extras</a></li>
     </ul>
-    Current order: <%=order%>
+    <!-- <form class="" action="/menu_selection" method="post">
+      <ul>
+        <%# menu.each do |key, value| %>
+        <li>
+          <input type="radio" name="menu_selection" required value="<%#=key%>"> <%#=key.capitalize%>
+        </li>
+        <%#end%>
+      </ul>
+    </form>-->
+    Current order:
+    <% order.each do |food|%>
+      <br>
+      $<%= sprintf("%.02f",food[1])%> <%= food[0]%>
+    <% end %>
   </body>
 </html>

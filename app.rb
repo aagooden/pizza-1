@@ -5,7 +5,7 @@ enable :sessions
 
 get '/' do
   if session[:master_order].class == NilClass
-    session[:master_order] = {"items" => [], "price" => []}
+    session[:master_order] = Array.new
   end
   debug_in_terminal
   erb :index
@@ -13,12 +13,19 @@ end
 
 get '/menu' do
   debug_in_terminal
-  erb :menu, locals: {order:session[:order]}
+  erb :menu, locals: {menu:menu_return, order:session[:master_order]}
+end
+
+get '/pizza' do
+  erb :pizza, locals: {menu:menu_return}
+end
+
+get '/custom_pizza' do
+  erb :custom_pizza, locals: {menu:menu_return}
 end
 
 get '/sides' do
-  menu = menu_return
-  erb :sides, locals: {menu:menu}
+  erb :sides, locals: {menu:menu_return}
 end
 
 post '/add_to_order' do

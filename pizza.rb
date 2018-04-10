@@ -12,7 +12,9 @@ master_order = Array.new
 
 def convert_input(string)
   #Converts params from ERB (string) into a usable array.
-  string.split(",")
+  output = string.split(",")
+  output[1] = output[1].to_f #This index will be used to show cost of item.
+  return output
 end
 
 def add_to_order(params, order)
@@ -20,9 +22,11 @@ def add_to_order(params, order)
   # iterate over master hash to determine price for subtotal
   # order = { "items" => [item1, item2, item3], "price" = [price1, price2, price3], "quantity" => [quanity1, quanity2, quantity3]}
 
-  order["items"].push params[0]
-  order["price"].push params[1]
+  # order["items"].push params[0]
+  # order["price"].push params[1]
   # order["quantity"] << pararms[2]
+
+  order.push params
   return order
 end
 
