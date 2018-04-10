@@ -36,6 +36,7 @@ def menu_return()
       "pepperoni" => 5.00,
       "cheese" => 4.00,
       "supreme" => 10.00,
+=begin
       "custom" => {
         "size" => {
           "small" => 9.99,
@@ -49,6 +50,7 @@ def menu_return()
         "sauce" => ["regular", "cheese", "ranch", "BBQ"],
         "special" => ["three cheese blend", "toothpaste", "legos"],
       }
+=end
     },
     "sides" => {
       "Cheesesticks" => 6.50,
