@@ -10,11 +10,15 @@
       <!-- |key, value| prevents displaying whole menu hash -->
         <li><a href="/sides?category=<%=key%>"><%=key.capitalize%></a></li>
       <% end %>
-      <!-- <input type="submit" value="Choose category"> -->
     </ul>
-    Current order:
+    Current order:<br>
+    <table>
     <% order.each do |food|%>
-      <br>$<%= sprintf("%.02f",food[1])%> <%= food[0]%>
+      <tr>
+        <td>$<%= sprintf("%.02f",food[1])%></td>
+        <td><%= food[0].capitalize%></td>
+      </tr>
     <% end %>
+  </table>
   </body>
 </html>
