@@ -57,6 +57,11 @@ post '/add_custom' do
   redirect '/menu'
 end
 
+get '/remove' do
+  session[:master_order] = remove(params[:item].to_i, session[:master_order])
+  redirect '/menu'
+end
+
 get '/checkout' do
   cost = calc_total(session[:master_order])
   erb :cart, locals: {order:session[:master_order], cost: cost}

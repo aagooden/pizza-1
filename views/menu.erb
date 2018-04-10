@@ -16,7 +16,7 @@
     </ul>
     Current order:<br>
     <table>
-    <% order.each do |food|%>
+    <% order.each_with_index do |food, index|%>
       <tr>
         <td>$<%= sprintf("%.02f",(food[1] * food[2]))%></td>
         <td>
@@ -33,7 +33,7 @@
           <% end %>
         </td>
         <td>Qty: <%= food[2] %></td>
-        <!-- <td>[<a href="/remove?item=" method="post">X</a>]</td> -->
+        <!-- <td>[<a href="/remove?item=<%=index%>" method="post">X</a>]</td> -->
       </tr>
     <% end %>
   </table>

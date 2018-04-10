@@ -53,6 +53,10 @@ def add_custom(params, ingreds, order)
   return order
 end
 
+def remove(index, order)
+  order = order.delete_at(index)
+end
+
 def menu_return()
   menu = {
     "pizza" => {
@@ -97,17 +101,11 @@ def menu_return()
   return menu
 end
 
-=begin
-Nest hashes of hashes. Iterate over it in erb to display options; use this for multiple pages. Start with sides for simplicity and build up from there.
-=end
-
 def calc_total(params)
   money_hash = {
-    "delivery_fee" => 0.0,
     "subtotal" => 0.0,
     "tax" => 0.0,
     "total" => 0.0,
-    "tip" => 0.0
   }
 
   tax_rate = 0.06
