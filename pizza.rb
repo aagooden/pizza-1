@@ -10,15 +10,23 @@ master_order = Array.new
    """
  end
 
-def convert_input(string)
-  #Converts params from ERB (string) into a usable array.
-  if string.class == Array
-    return string
-  else
-    output = string.split(",")
-    output[1] = output[1].to_f #This index will be used to show cost of item.
-    return output
+def convert_input(input)
+  # Converts params from ERB (string) into a usable array.
+  # ["item name", 5.99(cost), quantity, ingreds if custom_pizza]
+
+  if input[0].include? ","
+    b = input.shift.split(",")
+    b[1] = b[1].to_f
+    input.unshift b[1]
+    input.unshift b[0]
   end
+
+  puts " conversion input is #{input}"
+  input[1] = input[1].to_f #This index will be used to show cost of item.
+  puts " conversion input is #{input}"
+  input[2] = input[2].to_i #quanity of item
+  puts " conversion input is #{input}"
+  return input
 end
 
 def add_to_order(params, order)
@@ -41,7 +49,6 @@ def menu_return()
       "cheese" => 4.00,
       "supreme" => 10.00,
     },
-
     "size" => {
       "small" => 9.99,
       "medium" => 12.24,
@@ -55,7 +62,6 @@ def menu_return()
       "sauce" => ["regular", "cheese", "ranch", "BBQ"],
       "special" => ["three cheese blend", "toothpaste", "legos"],
     },
-
     "sides" => {
       "Cheesesticks" => 6.50,
       "Breadsticks" => 6.50,
@@ -81,24 +87,6 @@ def menu_return()
 end
 
 =begin
-def pizza_menu(order)
-  puts "Select an option.\n1: Pepperoni Pizza\n2: Cheese Pizza\n3: Supreme Pizza\n4: Meat Lover's Pizza"#\n5: Custom Pizza"
-  print "> "
-  select = gets.chomp.to_i
-
-  def custom_pizza
-    puts "Select your toppings.\n1: Meats\n2: Veggies\n3: Sauce\n4: Special\n5: Crust"
-    print "> "
-
-    #Custom pizza Menu
-    #add $1.00 for each additional topping
-  else
-  end
-  main_menu(order)
-end
-=end
-
-=begin
 Nest hashes of hashes. Iterate over it in erb to display options; use this for multiple pages. Start with sides for simplicity and build up from there.
 =end
 
@@ -117,8 +105,6 @@ def calc_total(params)
   tax_rate = 0.06
   subtotal = subtotal.to_f
   delivery_fee = 2.50
-  puts "\n\n"
-  #puts "Current order is #{order}"
 
   order.length times do
     puts "$#{sprintf("%.02f", order[counter][0])} #{order[counter][1]}"

@@ -9,12 +9,14 @@
     <form action="/add_to_order" method="post">
       <input type="hidden" name="selection[]" value="custom pizza">
       <input type="hidden" name="selection[]" value="12.99">
+      <!-- <input type="hidden" name="selection[]" value="1">  -->
+      <!-- custom pizza quanity defaults to 1, may change later -->
       <ul>
         <% menu["custom"].each do |key, value| %>
         <li><%=key.capitalize%>
           <ul>
             <% value.each do |ingred| %>
-            <li> <input type="checkbox" name="selection[]" value="<%=ingred%>"> <%=ingred.capitalize%></li>
+            <li> <input type="checkbox" name="ingreds[]" value="<%=ingred%>"> <%=ingred.capitalize%></li>
             <% end %>
           </ul>
         </li>

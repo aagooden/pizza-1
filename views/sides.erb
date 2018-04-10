@@ -20,15 +20,16 @@
       <ul>
         <% menu[selection].each do |key, value| %>
           <li>
-            <input type="radio" name="selection" required value="<%=key%>, <%=value%>"> $<%= sprintf("%.02f",value)%> <%=key%>
+            <input type="radio" name="selection[]" required value="<%=key%>, <%=value%>"> $<%= sprintf("%.02f",value)%> <%=key.capitalize%>
           </li>
         <%end%>
         <% if selection == "pizza" %>
-          <li>
-            <a href="/custom_pizza">Make your own!</a>
-          </li>
+        <li>
+          <a href="/custom_pizza">Make your own!</a>
+        </li>
         <% end %>
       </ul>
+      <p>Quantity: <input type="number" name="selection[]" required></p>
       <input type="submit" value="Add this item">
     </form>
     <a href="/menu"><button>Return to menu</button></a>

@@ -17,7 +17,7 @@
     <table>
     <% order.each do |food|%>
       <tr>
-        <td>$<%= sprintf("%.02f",food[1])%></td>
+        <td>$<%= sprintf("%.02f",(food[1] * food[2]))%></td>
         <td>
           <% if food[0] == "custom pizza" %>
             <%= food[0].capitalize%>
@@ -26,6 +26,7 @@
             <%= food[0].capitalize%>
           <% end %>
         </td>
+        <td>Qty: <%= food[2] %></td>
       </tr>
     <% end %>
   </table>
