@@ -86,7 +86,7 @@ def calc_total(params)
 
   tax_rate = 0.06
   params.each do |item|
-    money_hash["subtotal"] += (item[1] * item[2])
+    money_hash["subtotal"] += (item["qty"] * item["price"])
   end
   money_hash["tax"] = money_hash["subtotal"] * tax_rate
   money_hash["total"] = money_hash["tax"] + money_hash["subtotal"]

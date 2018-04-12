@@ -6,22 +6,22 @@
   </head>
   <body>
     <table>
-      <% order.each do |food|%>
+      <% order.each_with_index do |food, index|%>
         <tr>
-          <td>$<%= sprintf("%.02f",(food[1] * food[2]))%></td>
+          <td>$<%= sprintf("%.02f",(food["price"] * food["qty"]))%></td>
           <td>
-            <% if food[0] == "custom pizza" %>
-              <%= food[0].capitalize%>
+            <% if food["item_name"] == "custom pizza" %>
+              <%= food["item_name"].capitalize%>
               <ul>
-                <% food[4].each do |ingred| %>
-                  <li> <%=ingred%> </li>
+                <% food["ingreds"].each do |ingred| %>
+                <li> <%=ingred%> </li>
                 <% end %>
               </ul>
             <% else %>
-              <%= food[0].capitalize%>
+              <%= food["item_name"].capitalize%>
             <% end %>
           </td>
-          <td>Qty: <%= food[2] %></td>
+          <td>Qty: <%= food["qty"] %></td>
         </tr>
       <% end %>
     </table>
