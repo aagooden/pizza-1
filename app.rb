@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require_relative 'pizza.rb'
 enable :sessions
 
