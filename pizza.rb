@@ -20,6 +20,8 @@ def add_to_order(params, order)
     "qty" => params["qty"].to_i
   }
 
+  item_final.delete_if {|key, value| value == nil}
+
   order.push item_final
   return order
 end
