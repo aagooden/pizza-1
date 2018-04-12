@@ -7,7 +7,7 @@ ul {
   margin: 0;
   padding: 0;
 }
-.navbar{
+.navbar {
   float: right;
 
 }
@@ -16,7 +16,8 @@ ul {
   display: inline;
 }
 .yield{
-  /* background-color: cyan; */
+  background-color: powderblue;
   width: 70%;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
