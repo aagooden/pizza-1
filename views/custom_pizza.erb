@@ -10,22 +10,26 @@
     <form action="/add_custom" method="post">
       <input type="hidden" name="item_name" value="original">
       <input type="hidden" name="price" value="12.99">
-      Quantity: <input type="number" min="1" max="50" required name="quantity" value="1">
-      <br>Size:
-      <% menu["size"].each do |value| %>
-        <input type="radio" name="size_price" required value="<%=value[0]%>, <%=value[1]%>"> <%=value[0].capitalize%>
-      <% end %>
       <ul>
         <% menu["custom"].each do |key, value| %>
         <li><%=key.capitalize%>
           <ul>
             <% value.each do |ingred| %>
-            <li> <input type="checkbox" name="ingreds[]" value="<%=ingred%>"> <%=ingred.capitalize%></li>
+            <li>
+              <img height="25" width="25" src="/img/pepperoni.jpg">
+              <!-- <img height="25" width="25" src="/img/<%=ingred%>.jpg"> -->
+              <input type="checkbox" name="ingreds[]" value="<%=ingred%>"> <%=ingred.capitalize%></li>
             <% end %>
           </ul>
         </li>
         <% end %>
       </ul>
+      Quantity: <input type="number" min="1" max="50" required name="quantity" value="1">
+      <br>Size:
+      <% menu["size"].each do |value| %>
+      <input type="radio" name="size_price" required value="<%=value[0]%>, <%=value[1]%>"> <%=value[0].capitalize%>
+      <% end %>
+      <br>
       <input type="submit" value="Add this item">
     </form>
     <a href="/menu"><button>Return to menu</button></a>
