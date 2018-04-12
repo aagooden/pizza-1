@@ -36,6 +36,9 @@ def add_to_order(params, order)
 end
 
 def add_custom(params, order)
+  if params["ingreds"] == nil
+    params["ingreds"] = []
+  end
 
   size_price = params["size_price"].split(",")
   params["size"] = size_price[0]

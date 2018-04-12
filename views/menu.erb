@@ -6,6 +6,8 @@
     <title></title>
   </head>
   <body>
+    <div class="foodmenu">
+
     <ul>
       <% menu.each do |key, value| %>
         <!-- |key, value| prevents displaying whole menu hash -->
@@ -14,6 +16,7 @@
         <% end %>
       <% end %>
     </ul>
+  </div>
     <% if order.length != 0 %>
       Current order:<br>
       <table>

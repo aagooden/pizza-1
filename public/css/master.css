@@ -21,3 +21,12 @@ ul {
   margin-left: auto;
   margin-right: auto;
 }
+.foodmenu{
+  margin: auto;
+  width: inherit;
+}
+.foodmenu li{
+  text-transform: capitalize;
+  display: inline;
+
+}
