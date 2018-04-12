@@ -7,15 +7,7 @@
   <body>
     <h2>Select an item</h2>
     <form action="/add_to_order" method="post">
-      <!-- Loop through hash to show items and their price.
-      <%#Something like: key Price: value %>
-      <%#Clicking brings up small area to confirm adding item to order with input[number] for quantity and a input[submit] add button and input[submit] cancel button. %>-->
-      <%#menu.each do |name, values|%>
-        <%#values.each do |value|%>
-          <!-- do stuff -->
-          <%#= value %>
-        <%#end%>
-      <%#end%>
+      <!-- Loop through hash to show items and their price. -->
 
       <ul>
         <% menu[selection].each do |key, value| %>
@@ -25,14 +17,14 @@
         <%end%>
         <% if selection == "pizza" %>
           <br><% menu["size"].each do |size, price|%>
-            <input type="radio" name="size_price" value="<%=size%>, <%=price%>"> <%=size%>
+            <input type="radio" name="size_price" required value="<%=size%>, <%=price%>"> <%=size%>
           <%end%>
           <li>
             <a href="/custom_pizza">Make your own!</a>
           </li>
         <% end %>
       </ul>
-      <p>Quantity: <input type="number" min="1" max="50" name="quantity" required></p>
+      <p>Quantity: <input type="number" min="1" max="50" value="1" name="quantity" required></p>
       <input type="submit" value="Add this item">
     </form>
     <a href="/menu"><button>Return to menu</button></a>

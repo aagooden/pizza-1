@@ -14,12 +14,13 @@ def add_to_order(params, order)
   name_price = params["name_price"].split(",")
   if params["size_price"] != nil
     size_price = params["size_price"].split(",")
+    size = size_price[0]
   end
 
   item_final = {
     "item_name" => name_price[0],
     "price" => name_price[1].to_f,
-    "size" => size_price[0],
+    "size" => size,
     "qty" => params["qty"].to_i
   }
 

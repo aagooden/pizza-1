@@ -15,3 +15,8 @@ ul {
   text-transform: capitalize;
   display: inline;
 }
+.yield{
+  /* background-color: cyan; */
+  width: 70%;
+  margin: auto;
+}

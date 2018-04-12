@@ -8,12 +8,12 @@
     <h2>Select an item</h2>
     <h3>Each additional topping costs $1</h3>
     <form action="/add_custom" method="post">
-      <input type="hidden" name="item_name" value="custom pizza">
+      <input type="hidden" name="item_name" value="original">
       <input type="hidden" name="price" value="12.99">
-      Quantity: <input type="number" min="1" max="50" name="quantity" value="1">
+      Quantity: <input type="number" min="1" max="50" required name="quantity" value="1">
       <br>Size:
       <% menu["size"].each do |value| %>
-        <input type="radio" name="size_price" value="<%=value[0]%>, <%=value[1]%>"> <%=value[0].capitalize%>
+        <input type="radio" name="size_price" required value="<%=value[0]%>, <%=value[1]%>"> <%=value[0].capitalize%>
       <% end %>
       <ul>
         <% menu["custom"].each do |key, value| %>
@@ -26,7 +26,7 @@
         </li>
         <% end %>
       </ul>
-      <input type="submit" name="" value="Add this item">
+      <input type="submit" value="Add this item">
     </form>
     <a href="/menu"><button>Return to menu</button></a>
   </body>
