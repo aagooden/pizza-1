@@ -25,6 +25,7 @@ def add_to_order(params, order)
 
   if size_price != nil
     item_final["price"] += size_price[1].to_f
+    item_final["item_name"] = item_final["size"].capitalize + " " + item_final["item_name"]
   end
 
   item_final.delete_if {|key, value| value == nil}
@@ -38,7 +39,9 @@ def add_custom(params, order)
   size_price = params["size_price"].split(",")
   params["size"] = size_price[0]
   params["price"] = size_price[1].to_f + (params["ingreds"].length - 1)
+  params["item_name"] = params["size"] + " " + params["item_name"]
   params.delete("size_price")
+
   order.push params
   return order
 end

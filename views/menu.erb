@@ -21,7 +21,7 @@
         <tr>
           <td>$<%= sprintf("%.02f",(food["price"] * food["qty"]))%></td>
           <td>
-            <% if food["item_name"] == "custom pizza" %>
+            <% if food["ingreds"] != nil %>
               <%= food["item_name"].capitalize%>
               <ul>
                 <% food["ingreds"].each do |ingred| %>
