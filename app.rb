@@ -33,26 +33,30 @@ end
 
 post '/add_to_order' do
   debug_in_terminal
-  input = convert_input(params[:selection])
-  puts """
-  input data: #{input}
-  input class: #{input.class}
-  ***************************************************
-  """
-  add_to_order(input, session[:master_order])
+
+  selection = {
+    "name_price" => params[:name_price],
+    "qty" => params[:quantity].to_i,
+    "size" => params[:size],
+  }
+
+  add_to_order(selection, session[:master_order])
 
   redirect '/menu'
 end
 
 post '/add_custom' do
   debug_in_terminal
-  input = convert_input(params[:selection])
-  puts """
-  input data: #{input}
-  input class: #{input.class}
-  ***************************************************
-  """
-  add_custom(input, params[:ingreds], session[:master_order])
+
+  selection = {
+    "item_name" => params[:item_name],
+    "price" => params[:price].to_f,
+    "qty" => params[:quantity].to_i,
+    "size" => params[:size],
+    "ingreds" => params[:ingreds]
+  }
+
+  add_custom(selection, session[:master_order])
 
   redirect '/menu'
 end

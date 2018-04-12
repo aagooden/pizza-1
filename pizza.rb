@@ -10,45 +10,21 @@ master_order = Array.new
    """
  end
 
-def convert_input(input)
-  # Converts params from ERB (string) into a usable array.
-  # ["item name", 5.99(cost), quantity, ingreds if custom_pizza]
-
-  if input[0].include? ","
-    b = input.shift.split(",")
-    b[1] = b[1].to_f
-    input.unshift b[1]
-    input.unshift b[0]
-  end
-
-  input[1] = input[1].to_f #This index will be used to show cost of item.
-  input[2] = input[2].to_i #quanity of item
-  return input
-end
-
 def add_to_order(params, order)
-  # push the item into a master order hash; item => [item name, price, quanity, [array of ingredients]]
-  change = false
+  name_price = params["name_price"].split(",")
 
-  order.each do |index|
-    if params[0] === index[0]
-      index[2] += params[2]
-      change = true
-    end
-  end
+  item_final = {
+    "item_name" => name_price[0],
+    "price" => name_price[1].to_f,
+    "size" => params["size"],
+    "qty" => params["qty"].to_i
+  }
 
-  if change == false
-    order.push params
-  end
-
+  order.push item_final
   return order
 end
 
-def add_custom(params, ingreds, order)
-  params << ingreds
-  ingreds.length.times do
-    params[1] += 1
-  end
+def add_custom(params, order)
   order.push params
   return order
 end

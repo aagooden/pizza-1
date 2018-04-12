@@ -6,7 +6,7 @@
   </head>
   <body>
     <h2>Select an item</h2>
-    <form class="" action="/add_to_order" method="post">
+    <form action="/add_to_order" method="post">
       <!-- Loop through hash to show items and their price.
       <%#Something like: key Price: value %>
       <%#Clicking brings up small area to confirm adding item to order with input[number] for quantity and a input[submit] add button and input[submit] cancel button. %>-->
@@ -20,16 +20,19 @@
       <ul>
         <% menu[selection].each do |key, value| %>
           <li>
-            <input type="radio" name="selection[]" required value="<%=key%>, <%=value%>"> $<%= sprintf("%.02f",value)%> <%=key.capitalize%>
+            <input type="radio" name="name_price" required value="<%=key%>, <%=value%>"> $<%= sprintf("%.02f",value)%> <%=key.capitalize%>
           </li>
         <%end%>
         <% if selection == "pizza" %>
-        <li>
-          <a href="/custom_pizza">Make your own!</a>
-        </li>
+          <br><% menu["size"].each do |size, price|%>
+            <input type="radio" name="size" value="<%=size%>"> <%=size%>
+          <%end%>
+          <li>
+            <a href="/custom_pizza">Make your own!</a>
+          </li>
         <% end %>
       </ul>
-      <p>Quantity: <input type="number" min="1" max="50" name="selection[]" required></p>
+      <p>Quantity: <input type="number" min="1" max="50" name="quantity" required></p>
       <input type="submit" value="Add this item">
     </form>
     <a href="/menu"><button>Return to menu</button></a>
