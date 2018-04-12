@@ -4,14 +4,13 @@ require_relative 'pizza.rb'
 enable :sessions
 
 get '/' do
-  if session[:master_order].class == NilClass
-    session[:master_order] = Array.new
-  end
-  debug_in_terminal
   erb :index
 end
 
 get '/menu' do
+  if session[:master_order].class == NilClass
+    session[:master_order] = Array.new
+  end
   debug_in_terminal
   erb :menu, locals: {menu:menu_return, order:session[:master_order]}
 end
@@ -37,7 +36,7 @@ post '/add_to_order' do
   selection = {
     "name_price" => params[:name_price],
     "qty" => params[:quantity].to_i,
-    "size" => params[:size],
+    "size_price" => params[:size_price],
   }
 
   add_to_order(selection, session[:master_order])
@@ -50,9 +49,9 @@ post '/add_custom' do
 
   selection = {
     "item_name" => params[:item_name],
-    "price" => params[:price].to_f,
+    # "price" => params[:price].to_f,
     "qty" => params[:quantity].to_i,
-    "size" => params[:size],
+    "size_price" => params[:size_price],
     "ingreds" => params[:ingreds]
   }
 

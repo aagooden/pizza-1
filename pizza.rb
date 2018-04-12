@@ -12,13 +12,20 @@ master_order = Array.new
 
 def add_to_order(params, order)
   name_price = params["name_price"].split(",")
+  if params["size_price"] != nil
+    size_price = params["size_price"].split(",")
+  end
 
   item_final = {
     "item_name" => name_price[0],
     "price" => name_price[1].to_f,
-    "size" => params["size"],
+    "size" => size_price[0],
     "qty" => params["qty"].to_i
   }
+
+  if size_price != nil
+    item_final["price"] += size_price[1].to_f
+  end
 
   item_final.delete_if {|key, value| value == nil}
 
@@ -27,6 +34,11 @@ def add_to_order(params, order)
 end
 
 def add_custom(params, order)
+
+  size_price = params["size_price"].split(",")
+  params["size"] = size_price[0]
+  params["price"] = size_price[1].to_f + (params["ingreds"].length - 1)
+  params.delete("size_price")
   order.push params
   return order
 end

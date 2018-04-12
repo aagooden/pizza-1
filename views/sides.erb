@@ -25,7 +25,7 @@
         <%end%>
         <% if selection == "pizza" %>
           <br><% menu["size"].each do |size, price|%>
-            <input type="radio" name="size" value="<%=size%>"> <%=size%>
+            <input type="radio" name="size_price" value="<%=size%>, <%=price%>"> <%=size%>
           <%end%>
           <li>
             <a href="/custom_pizza">Make your own!</a>

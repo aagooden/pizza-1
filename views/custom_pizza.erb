@@ -13,7 +13,7 @@
       Quantity: <input type="number" min="1" max="50" name="quantity" value="1">
       <br>Size:
       <% menu["size"].each do |value| %>
-        <input type="radio" name="size" value="<%=value[0]%>"> <%=value[0].capitalize%>
+        <input type="radio" name="size_price" value="<%=value[0]%>, <%=value[1]%>"> <%=value[0].capitalize%>
       <% end %>
       <ul>
         <% menu["custom"].each do |key, value| %>
