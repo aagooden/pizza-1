@@ -1,3 +1,6 @@
+# Overall, I would like to see some more aesthetically pleasing background.
+# There is more GET requests than there are POST requests.
+
 require 'sinatra'
 # require 'sinatra/reloader'
 require_relative 'pizza.rb'
@@ -11,6 +14,7 @@ get '/menu' do
   if session[:master_order].class == NilClass
     session[:master_order] = Array.new
   end
+  # This method just prints out the class, data, then the params it woud return in Sinatra to the terminal.
   debug_in_terminal
   erb :menu, locals: {menu:menu_return, order:session[:master_order]}
 end
@@ -60,6 +64,7 @@ post '/add_custom' do
   redirect '/menu'
 end
 
+# Removes the order from the list of orders
 get '/remove' do
   session[:master_order] = remove(params[:item].to_i, session[:master_order])
   redirect '/menu'
