@@ -1,5 +1,6 @@
-# Overall, I would like to see some more aesthetically pleasing background.
-# There is more GET requests than there are POST requests.
+# Overall, I would like to see some more aesthetically pleasing background with Open Sans or some other nice looking font.
+# I would like to create a bit more spacing between buttons.
+# Change the nav bar looking menu and have each button on a new line.
 
 require 'sinatra'
 # require 'sinatra/reloader'
