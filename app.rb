@@ -1,3 +1,7 @@
+# Overall, I would like to see some more aesthetically pleasing background with Open Sans or some other nice looking font.
+# I would like to create a bit more spacing between buttons.
+# Change the nav bar looking menu and have each button on a new line.
+
 require 'sinatra'
 # require 'sinatra/reloader'
 require_relative 'pizza.rb'
@@ -11,6 +15,7 @@ get '/menu' do
   if session[:master_order].class == NilClass
     session[:master_order] = Array.new
   end
+  # This method just prints out the class, data, then the params it woud return in Sinatra to the terminal.
   debug_in_terminal
   erb :menu, locals: {menu:menu_return, order:session[:master_order]}
 end
@@ -60,6 +65,7 @@ post '/add_custom' do
   redirect '/menu'
 end
 
+# Removes the order from the list of orders
 get '/remove' do
   session[:master_order] = remove(params[:item].to_i, session[:master_order])
   redirect '/menu'
